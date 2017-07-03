@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"     xmlns:context="http://www.springframework.org/schema/context"
+xmlns:mvc="http://www.springframework.org/schema/mvc"     xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+  <bean id="adr" class="dependencyinjectiondemos.Address">
+  <property name="city" value="Chennai"></property>
+  <property name="pincode" value="600100"></property>
+  </bean>
+  <!-- Constructor injection -->
+  <!-- if there is both constructor and setter, setter value will be set -->
+  <bean id="bean1" class="dependencyinjectiondemos.Employee">
+          <constructor-arg value="401" index="0"/>
+          <constructor-arg value="Pooja" index="1"/>
+           <constructor-arg ref="adr"/>
+        </bean>
+       
+<!-- Setter injection -->
+  <bean id="bean2" class="dependencyinjectiondemos.Employee">
+         
+       <property name="empno" value="4065"/>
+         <property name="empName" value="Gaya"/>
+         <property name="adr" ref="adr"></property>
+        </bean>
+        
+        <!-- autowiring -to implicitly map reference bean to another bean without using'ref' attribute -->
+        
+        <bean id="bean3" class="dependencyinjectiondemos.Employee" autowire="byType">
+         
+       <property name="empno" value="103"/>
+         <property name="empName" value="Srini"/>
+    
+        </bean>
+        <!--  byName - reference bean name should match with property name of original bean -->
+         <bean id="bean4" class="dependencyinjectiondemos.Employee" autowire="byName">
+         
+       <property name="empno" value="104"/>
+         <property name="empName" value="Deepak"/>
+    
+        </bean>
+        
+           <!-- scope-to refer to the type of object that will be created.By default it is singleton.(means same memory will be shared by all object of that bean) -->
+
+ <bean id="bean5" class="dependencyinjectiondemos.Employee" scope="prototype">
+          <constructor-arg value="454" index="0"/>
+          <constructor-arg value="Prototype bean" index="1"/>
+           <constructor-arg ref="adr"/>
+        </bean>
+
+</beans>

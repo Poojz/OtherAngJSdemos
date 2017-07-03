@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SimpleJavaProjectUsingMaven">
+        <property name="context-root" value="SimpleJavaProjectUsingMaven"/>
+        <property name="java-output-path" value="/SimpleJavaProjectUsingMaven/target/classes"/>
+    </wb-module>
+</project-modules>
